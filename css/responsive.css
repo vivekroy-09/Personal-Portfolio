@@ -156,7 +156,7 @@
 .portfolio-main h1{ font-size: 35px !important;}
 .overlay p{ width: 100% !important;}
 .portfolio-main .card{ height: 100% !important;}
-.portfolio-main .card p{ display: none !important:}
+.portfolio-main .card p{ display: none !important;}
 /* contact */
 .contact-section .row{ flex-wrap: wrap !important; justify-content: center !important; width: 100%; gap: 60px 20px;}
 .contact-section .contact-box{ width: 100% !important;}
