@@ -98,6 +98,7 @@
 .portfolio-main .row{ margin: 20px !important; grid-template-columns: 1fr !important;}
 .portfolio-main .row .left, .right{ width: 100% !important;}
 .portfolio-main .card img{ object-fit: contain !important;}
+.portfolio-main .card{ height: 100% !important;}
 
 /* contact */
 .contact-section .row{ flex-wrap: wrap !important; justify-content: center !important; width: 100%; gap: 60px 20px;}
@@ -154,7 +155,8 @@
 .port-circles {    position: absolute !important;    top: 0 !important;    left: 0 !important;    width: 100% !important;    height: 112% !important;    overflow: hidden !important;}
 .portfolio-main h1{ font-size: 35px !important;}
 .overlay p{ width: 100% !important;}
-
+.portfolio-main .card{ height: 100% !important;}
+.portfolio-main .card p{ display: none !important:}
 /* contact */
 .contact-section .row{ flex-wrap: wrap !important; justify-content: center !important; width: 100%; gap: 60px 20px;}
 .contact-section .contact-box{ width: 100% !important;}
