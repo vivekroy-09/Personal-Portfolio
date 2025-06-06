@@ -1,0 +1,139 @@
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      overflow: hidden;
+      color: #fff;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    canvas.particles {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid #389aff;
+      padding: 40px 60px;
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 20px rgba(56, 154, 255, 0.3);
+      max-width: 90%;
+    }
+
+    h1 {
+      color: #389aff;
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .typing {
+      color: #ccc;
+      font-size: 16px;
+      min-height: 40px;
+      margin-bottom: 30px;
+      white-space: pre-line;
+    }
+
+    a.button {
+      padding: 12px 24px;
+      background: linear-gradient(145deg, #389aff, #007acc);
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      display: inline-block;
+      position: relative;
+      box-shadow: 0 0 15px #389affaa, inset 0 0 8px #ffffff20;
+    }
+
+    a.button::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border-radius: 12px;
+      background: radial-gradient(circle, #fff3 10%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    a.button:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 0 25px #389affcc, inset 0 0 12px #ffffff30;
+    }
+
+    a.button:hover::after {
+      opacity: 0.1;
+    }
+
+    .toggle-theme {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 10;
+      background: #389aff;
+      color: #000;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    body.light {
+      background: #fff;
+      color: #000;
+    }
+
+    body.light .card {
+      background: rgba(0, 0, 0, 0.05);
+      color: #000;
+      border-color: #007acc;
+    }
+
+    body.light .toggle-theme {
+      background: #000;
+      color: #fff;
+    }
+
+    body.light a.button {
+      background: linear-gradient(145deg, #000, #111);
+      color: #fff;
+      box-shadow: 0 0 15px #000, inset 0 0 8px #ffffff20;
+    }
+
+    body.light a.button:hover {
+      box-shadow: 0 0 25px #000, inset 0 0 12px #ffffff30;
+    }
+
+    @media screen and (max-width: 480px) {
+      .card {
+        padding: 20px 30px;
+      }
+      h1 {
+        font-size: 24px;
+      }
+      .typing {
+        font-size: 14px;
+      }
+    }

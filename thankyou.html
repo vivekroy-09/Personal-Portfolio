@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivek Roy | Frontend Devloper</title>
+    <link rel="stylesheet" href="thankyou.css">
+     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+</head>
+<canvas class="particles"></canvas>
+
+  <button class="toggle-theme" onclick="toggleTheme()">🌙 Toggle Mode</button>
+
+  <div class="container">
+    <div class="card">
+      <h1>Thank You!</h1>
+      <div class="typing" id="typing"></div>
+      <a href="index.html" class="button" onclick="triggerConfetti()">← Back to Home</a>
+    </div>
+  </div>
+
+  <audio id="beep" src="https://assets.mixkit.co/sfx/preview/mixkit-interface-click-1126.mp3" preload="auto"></audio>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+    }
+
+    const typingText = "Your message has been successfully sent.\nI'll get back to you soon.";
+    const typingDiv = document.getElementById('typing');
+    let index = 0;
+
+    function typeEffect() {
+      if (index < typingText.length) {
+        typingDiv.innerHTML += typingText.charAt(index);
+        index++;
+        setTimeout(typeEffect, 50);
+      }
+    }
+
+    const canvas = document.querySelector('canvas.particles');
+    const ctx = canvas.getContext('2d');
+    let particlesArray;
+
+    function initParticles() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      particlesArray = [];
+      for (let i = 0; i < 100; i++) {
+        particlesArray.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 2 + 1,
+          speedX: (Math.random() - 0.5) * 0.5,
+          speedY: (Math.random() - 0.5) * 0.5
+        });
+      }
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let p of particlesArray) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = "#389affaa";
+        ctx.fill();
+        p.x += p.speedX;
+        p.y += p.speedY;
+        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+      }
+      requestAnimationFrame(animateParticles);
+    }
+
+    function triggerConfetti() {
+      confetti({ particleCount: 60, spread: 70, origin: { y: 0.6 } });
+    }
+
+    window.onload = () => {
+      initParticles();
+      animateParticles();
+      typeEffect();
+      document.getElementById('beep').play();
+      confetti({ particleCount: 80, spread: 100, origin: { y: 0.6 } });
+    };
+
+    window.onresize = () => {
+      initParticles();
+    };
+  </script>
+</body>
+</html>
